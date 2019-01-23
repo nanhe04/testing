@@ -23,8 +23,10 @@ app.use(
     extended: false
   })
 );
+
 // images.
 app.use("/images", express.static(path.join("server/images")));
+
 // frontend.
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -43,12 +45,12 @@ app.use((req, res, next) => {
 });
 
 // Routes.
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
-})
+
 app.use('/admin', admins);
 app.use('/user', users);
 app.use('/driver', drivers);
-
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
 
 module.exports = app;
