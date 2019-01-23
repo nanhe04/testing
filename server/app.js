@@ -49,7 +49,7 @@ app.use((req, res, next) => {
 app.use('/admin', admins);
 app.use('/user', users);
 app.use('/driver', drivers);
-app.get('*', (req, res) => {
+app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
